@@ -54,6 +54,7 @@ class ShoppingListViewController: UIViewController {
     }
     @objc private func toggleEditState() {
         tableView.setEditing(!tableView.isEditing, animated: true)
+        navigationItem.leftBarButtonItem?.title = tableView.isEditing ? "Done" : "Edit"
     }
     @objc private func presentAddVC() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
