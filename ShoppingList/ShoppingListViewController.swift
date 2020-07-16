@@ -8,10 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ShoppingListViewController: UIViewController {
 
     private var tableView: UITableView!
     private var dataSource: DataSource! // subclass we created
+    private var editStateOn = false
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -60,7 +61,7 @@ class ViewController: UIViewController {
     }
     
     @objc private func toggleEditState() {
-        
+        editStateOn.toggle()
     }
     
     @objc private func presentAddVC() {

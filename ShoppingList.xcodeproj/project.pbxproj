@@ -9,20 +9,21 @@
 /* Begin PBXBuildFile section */
 		C65A50AC24BF470800AE2832 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65A50AB24BF470800AE2832 /* AppDelegate.swift */; };
 		C65A50AE24BF470800AE2832 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65A50AD24BF470800AE2832 /* SceneDelegate.swift */; };
-		C65A50B024BF470800AE2832 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65A50AF24BF470800AE2832 /* ViewController.swift */; };
+		C65A50B024BF470800AE2832 /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65A50AF24BF470800AE2832 /* ShoppingListViewController.swift */; };
 		C65A50B324BF470800AE2832 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C65A50B124BF470800AE2832 /* Main.storyboard */; };
 		C65A50B524BF470B00AE2832 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C65A50B424BF470B00AE2832 /* Assets.xcassets */; };
 		C65A50B824BF470B00AE2832 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C65A50B624BF470B00AE2832 /* LaunchScreen.storyboard */; };
 		C65A50C024BF476400AE2832 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65A50BF24BF476400AE2832 /* Category.swift */; };
 		C65A50C224BF487C00AE2832 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65A50C124BF487C00AE2832 /* Item.swift */; };
 		C65A50C424BF4AF200AE2832 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65A50C324BF4AF200AE2832 /* DataSource.swift */; };
+		C65A50C824C088AC00AE2832 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65A50C724C088AC00AE2832 /* AddItemViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C65A50A824BF470800AE2832 /* ShoppingList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoppingList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C65A50AB24BF470800AE2832 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C65A50AD24BF470800AE2832 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C65A50AF24BF470800AE2832 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C65A50AF24BF470800AE2832 /* ShoppingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
 		C65A50B224BF470800AE2832 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C65A50B424BF470B00AE2832 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C65A50B724BF470B00AE2832 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -30,6 +31,7 @@
 		C65A50BF24BF476400AE2832 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		C65A50C124BF487C00AE2832 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		C65A50C324BF4AF200AE2832 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		C65A50C724C088AC00AE2832 /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +66,8 @@
 			children = (
 				C65A50AB24BF470800AE2832 /* AppDelegate.swift */,
 				C65A50AD24BF470800AE2832 /* SceneDelegate.swift */,
-				C65A50AF24BF470800AE2832 /* ViewController.swift */,
+				C65A50AF24BF470800AE2832 /* ShoppingListViewController.swift */,
+				C65A50C724C088AC00AE2832 /* AddItemViewController.swift */,
 				C65A50BF24BF476400AE2832 /* Category.swift */,
 				C65A50C124BF487C00AE2832 /* Item.swift */,
 				C65A50C324BF4AF200AE2832 /* DataSource.swift */,
@@ -149,8 +152,9 @@
 			files = (
 				C65A50C424BF4AF200AE2832 /* DataSource.swift in Sources */,
 				C65A50C224BF487C00AE2832 /* Item.swift in Sources */,
-				C65A50B024BF470800AE2832 /* ViewController.swift in Sources */,
+				C65A50B024BF470800AE2832 /* ShoppingListViewController.swift in Sources */,
 				C65A50AC24BF470800AE2832 /* AppDelegate.swift in Sources */,
+				C65A50C824C088AC00AE2832 /* AddItemViewController.swift in Sources */,
 				C65A50AE24BF470800AE2832 /* SceneDelegate.swift in Sources */,
 				C65A50C024BF476400AE2832 /* Category.swift in Sources */,
 			);
