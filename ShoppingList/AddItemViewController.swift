@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol AddItemViewControllerDelegate {
+protocol AddItemViewControllerDelegate: NSObject {
     func didAddItem(item: Item)
 }
 
@@ -19,7 +19,7 @@ class AddItemViewController: UIViewController {
     @IBOutlet weak var itemPriceTextFIeld: UITextField!
     @IBOutlet weak var addToCartButton: UIButton!
     
-    var delegate: AddItemViewControllerDelegate?
+    weak var delegate: AddItemViewControllerDelegate?
     private var pickerCatergories = Category.allCases
     private var selectedCategory: Category?
     
@@ -30,15 +30,14 @@ class AddItemViewController: UIViewController {
     }
 
     @IBAction func addToCartButtonPressed(_ sender: UIButton) {
-        guard let itemName = itemNameTextField.text, let itemCategory = selectedCategory, let itemPrice = itemPriceTextFIeld.text else {
+        guard let itemName = itemNameTextField.text, !itemName.isEmpty, let itemCategory = selectedCategory, let itemPrice = itemPriceTextFIeld.text, !itemPrice.isEmpty, let price = Double(itemPrice) else {
             addToCartButton.backgroundColor = .gray
             addToCartButton.isEnabled = false
             return
         }
         addToCartButton.backgroundColor = .blue
         addToCartButton.isEnabled = true
-        guard let priceAsDouble = Double(itemPrice) else {return}
-        let newItem = Item(name: itemName, price: priceAsDouble, category: itemCategory)
+        let newItem = Item(name: itemName, price: price, category: itemCategory)
         delegate?.didAddItem(item: newItem)
         dismiss(animated: true)
     }

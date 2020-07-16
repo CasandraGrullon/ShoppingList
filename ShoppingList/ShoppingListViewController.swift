@@ -12,7 +12,6 @@ class ShoppingListViewController: UIViewController {
 
     private var tableView: UITableView!
     private var dataSource: DataSource! // subclass we created
-    private var editStateOn = false
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -20,13 +19,11 @@ class ShoppingListViewController: UIViewController {
         configureTableView()
         configureTableViewDataSource()
     }
-    
     private func configureNavBar() {
         navigationItem.title = "Shopping List"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(toggleEditState))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(presentAddVC))
     }
-
     private func configureTableView() {
         tableView = UITableView(frame: view.bounds, style: .insetGrouped)
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -34,7 +31,6 @@ class ShoppingListViewController: UIViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         view.addSubview(tableView)
     }
-    
     private func configureTableViewDataSource() {
         dataSource = DataSource(tableView: tableView, cellProvider: { (tableView, indexPath, item) -> UITableViewCell? in
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
@@ -42,13 +38,10 @@ class ShoppingListViewController: UIViewController {
             cell.detailTextLabel?.text = "\(item.price)"
             return cell
         })
-        
         //setup animation type
         dataSource.defaultRowAnimation = .middle
-        
         //setup initial snapshot
         var snapshot = NSDiffableDataSourceSnapshot<Category, Item>()
-        
         //populate snapshot with sections and items for each section
         for category in Category.allCases {
             //filter the testData() items for that category
@@ -59,11 +52,9 @@ class ShoppingListViewController: UIViewController {
         
         dataSource.apply(snapshot, animatingDifferences: true)
     }
-    
     @objc private func toggleEditState() {
-        editStateOn.toggle()
+        tableView.setEditing(!tableView.isEditing, animated: true)
     }
-    
     @objc private func presentAddVC() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let addItemVC = storyboard.instantiateViewController(identifier: "AddItemViewController") { (coder) in
@@ -71,21 +62,13 @@ class ShoppingListViewController: UIViewController {
         }
         addItemVC.delegate = self
         present(addItemVC, animated: true)
-        //TODO:
-        //1. create a AddItemViewController file & storyboard object
-        //2. add 2 textfields -> name, price
-        //3. add picker to manage categories
-        //4. user can add new item to a category by pressing submit button
-        //5. persist new object to first vc (delegation, KVO, notification center, unwind segue)
     }
 }
 
 extension ShoppingListViewController: AddItemViewControllerDelegate {
     func didAddItem(item: Item) {
         var snapshot = dataSource.snapshot()
-
         snapshot.appendItems([item], toSection: item.category)
-
         dataSource.apply(snapshot, animatingDifferences: true)
     }
 }
