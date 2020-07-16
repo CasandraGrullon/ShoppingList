@@ -65,6 +65,9 @@ class ShoppingListViewController: UIViewController {
     }
     
     @objc private func presentAddVC() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let addItemVC = storyboard.instantiateViewController(identifier: "AddItemViewController")
+        present(addItemVC, animated: true)
         //TODO:
         //1. create a AddItemViewController file & storyboard object
         //2. add 2 textfields -> name, price

@@ -44,7 +44,7 @@
         <!--Add Item View Controller-->
         <scene sceneID="qEm-ES-yjp">
             <objects>
-                <viewController id="gHe-yb-H7N" customClass="AddItemViewController" customModule="ShoppingList" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddItemViewController" id="gHe-yb-H7N" customClass="AddItemViewController" customModule="ShoppingList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZIA-yx-Qyl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -90,7 +90,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IYr-MC-6Nh">
-                                <rect key="frame" x="10" y="290" width="394" height="89"/>
+                                <rect key="frame" x="10" y="289.5" width="394" height="89.5"/>
                             </pickerView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
