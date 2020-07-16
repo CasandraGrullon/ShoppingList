@@ -20,7 +20,7 @@ class AddItemViewController: UIViewController {
     @IBOutlet weak var addToCartButton: UIButton!
     
     var delegate: AddItemViewControllerDelegate?
-    private var pickerCatergories = [Category]()
+    private var pickerCatergories = Category.allCases
     private var selectedCategory: Category?
     
     override func viewDidLoad() {
@@ -40,6 +40,7 @@ class AddItemViewController: UIViewController {
         guard let priceAsDouble = Double(itemPrice) else {return}
         let newItem = Item(name: itemName, price: priceAsDouble, category: itemCategory)
         delegate?.didAddItem(item: newItem)
+        dismiss(animated: true)
     }
     
 }
