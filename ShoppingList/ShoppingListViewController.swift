@@ -66,7 +66,10 @@ class ShoppingListViewController: UIViewController {
     
     @objc private func presentAddVC() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let addItemVC = storyboard.instantiateViewController(identifier: "AddItemViewController")
+        let addItemVC = storyboard.instantiateViewController(identifier: "AddItemViewController") { (coder) in
+            return AddItemViewController(coder: coder)
+        }
+        addItemVC.delegate = self
         present(addItemVC, animated: true)
         //TODO:
         //1. create a AddItemViewController file & storyboard object
@@ -77,12 +80,12 @@ class ShoppingListViewController: UIViewController {
     }
 }
 
-//extension ViewController: AddItemViewControllerDelegate {
-//    func didAddItem(item: Item) {
-//        var snapshot = dataSource.snapshot()
-//
-//        snapshot.appendItems([item], toSection: item.category)
-//
-//        dataSource.apply(snapshot, animatingDifferences: true)
-//    }
-//}
+extension ShoppingListViewController: AddItemViewControllerDelegate {
+    func didAddItem(item: Item) {
+        var snapshot = dataSource.snapshot()
+
+        snapshot.appendItems([item], toSection: item.category)
+
+        dataSource.apply(snapshot, animatingDifferences: true)
+    }
+}

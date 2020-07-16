@@ -19,34 +19,44 @@ class AddItemViewController: UIViewController {
     @IBOutlet weak var itemPriceTextFIeld: UITextField!
     @IBOutlet weak var addToCartButton: UIButton!
     
-    //var delegate: AddItemViewControllerDelegate?
+    var delegate: AddItemViewControllerDelegate?
     private var pickerCatergories = [Category]()
     private var selectedCategory: Category?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        itemCategoryPickerView.dataSource = self
         itemCategoryPickerView.delegate = self
+        itemCategoryPickerView.dataSource = self
     }
 
     @IBAction func addToCartButtonPressed(_ sender: UIButton) {
-        //guard let itemName = itemNameTextField.text,
-       // let newItem = Item(name: itemNameTextField.text, price: <#T##Double#>, category: <#T##Category#>)
+        guard let itemName = itemNameTextField.text, let itemCategory = selectedCategory, let itemPrice = itemPriceTextFIeld.text else {
+            addToCartButton.backgroundColor = .gray
+            addToCartButton.isEnabled = false
+            return
+        }
+        addToCartButton.backgroundColor = .blue
+        addToCartButton.isEnabled = true
+        guard let priceAsDouble = Double(itemPrice) else {return}
+        let newItem = Item(name: itemName, price: priceAsDouble, category: itemCategory)
+        delegate?.didAddItem(item: newItem)
     }
     
-}
-extension AddItemViewController: UIPickerViewDelegate {
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerCatergories[component].rawValue
-    }
 }
 extension AddItemViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return pickerCatergories.count
+        return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 1
+        return pickerCatergories.count
     }
 }
-
+extension AddItemViewController: UIPickerViewDelegate {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerCatergories[row].rawValue
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedCategory = pickerCatergories[row]
+    }
+}
