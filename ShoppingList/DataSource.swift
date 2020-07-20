@@ -43,10 +43,8 @@ class DataSource: UITableViewDiffableDataSource<Category, Item> {
         }
         // Scenerio 1: attempting to move to same spot
         guard sourceIndexPath != destinationIndexPath else { return }
-        
         //1b. get the Destination item -> location of new spot
         let destinationItem = itemIdentifier(for: destinationIndexPath)
-        
         //1c. get the current Snapshot
         var snapshot = self.snapshot()
         
@@ -57,28 +55,23 @@ class DataSource: UITableViewDiffableDataSource<Category, Item> {
                 
                 //2/3b. check which section the object is being moved
                 let isAfter = destinationIndex > sourceIndex && snapshot.sectionIdentifier(containingItem: sourceItem) == snapshot.sectionIdentifier(containingItem: destinationItem)
-                
                 //2/3c. delete the source item from the snapshot
                 snapshot.deleteItems([sourceItem])
-                
                 if isAfter { //2d. insert after
                     snapshot.insertItems([sourceItem], afterItem: destinationItem)
                 } else { //3d. insert before
                     snapshot.insertItems([sourceItem], beforeItem: destinationItem)
                 }
-            } else { // SCENERIO 4: no indexpath at destination section
-                //4a. get the section
-                let destinationSection = snapshot.sectionIdentifiers[destinationIndexPath.section]
-                
-                //4b. delete the source item from snapshot
-                snapshot.deleteItems([sourceItem])
-                
-                //4c. append source item to the new section
-                snapshot.appendItems([sourceItem], toSection: destinationSection)
             }
-            
+        } else { // SCENERIO 4: no indexpath at destination section
+            //4a. get the section
+            let destinationSection = snapshot.sectionIdentifiers[destinationIndexPath.section]
+            //4b. delete the source item from snapshot
+            snapshot.deleteItems([sourceItem])
+            //4c. append source item to the new section
+            snapshot.appendItems([sourceItem], toSection: destinationSection)
         }
-        apply(snapshot, animatingDifferences: false)
         
+        apply(snapshot, animatingDifferences: false)
     }
 }
