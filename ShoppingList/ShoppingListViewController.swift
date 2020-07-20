@@ -34,8 +34,9 @@ class ShoppingListViewController: UIViewController {
     private func configureTableViewDataSource() {
         dataSource = DataSource(tableView: tableView, cellProvider: { (tableView, indexPath, item) -> UITableViewCell? in
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-            cell.textLabel?.text = "\(item.name)"
-            cell.detailTextLabel?.text = "\(item.price)"
+            let price = String(format: "%.2f", item.price)
+            cell.textLabel?.text = "\(item.name)\n$\(price)"
+            cell.textLabel?.numberOfLines = 0
             return cell
         })
         //setup animation type
